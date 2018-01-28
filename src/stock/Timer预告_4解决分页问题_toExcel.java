@@ -170,9 +170,9 @@ public class Timer预告_4解决分页问题_toExcel {
             
           }
           
-          excel.updateExcelxlxs2("H:\\新建文件夹\\新建文件夹\\程序复制\\z预告程序复制4.xlsx", "所有四季利润", map,null);
+          excel.updateExcelxlxs2("F:\\stock\\git\new\\新建文件夹\\程序复制\\z预告程序复制4.xlsx", "所有四季利润", map,null);
           
-          System.out.println("请查看:H:\\新建文件夹\\新建文件夹\\程序复制\\z预告程序复制4.xlsx  所有四季利润");
+          System.out.println("F:\\stock\\git\new\\新建文件夹\\程序复制\\z预告程序复制4.xlsx 所有四季利润");
           
           
           
