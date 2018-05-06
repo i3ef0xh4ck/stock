@@ -32,7 +32,7 @@ public class Timer预告_4解决分页问题_toExcel {
 
   //这只是第一页  还有第二页的url
   String url3 = "http://data.eastmoney.com/bbsj/"+date2+"/yjyg.html";
-  System.out.println("程序开始前请先将预告列复制到 H:\\新建文件夹\\新建文件夹\\程序复制\\z预告程序复制.xlsx");
+  System.out.println("程序开始前请先将预告列复制到 f:\\新建文件夹\\新建文件夹\\程序复制\\z预告程序复制.xlsx");
   System.out.println("总入口："+url3);
   
         
@@ -91,9 +91,9 @@ public class Timer预告_4解决分页问题_toExcel {
              String 发布date = split[split.length-2];
              
             // if(发布date.equals(formatDate)){ 
-            // if(listDate.contains(发布date) || !listDate.contains(发布date)){  //第一次执行时
+             if(listDate.contains(发布date) || !listDate.contains(发布date)){  //第一次执行时
              
-             if(listDate.contains(发布date) ){  //第二次及以后次执行
+            // if(listDate.contains(发布date) ){  //第二次及以后次执行
              
                
                for(int j = 0 ; j < split.length;j++){
@@ -170,9 +170,9 @@ public class Timer预告_4解决分页问题_toExcel {
             
           }
           
-          excel.updateExcelxlxs2("F:\\stock\\git\new\\新建文件夹\\程序复制\\z预告程序复制4.xlsx", "所有四季利润", map,null);
+          excel.updateExcelxlxs2("F:\\stock\\git\\new\\新建文件夹\\程序复制\\z预告程序复制4.xlsx", "所有四季利润", map,null);
           
-          System.out.println("F:\\stock\\git\new\\新建文件夹\\程序复制\\z预告程序复制4.xlsx 所有四季利润");
+          System.out.println("F:\\stock\\git\\new\\新建文件夹\\程序复制\\z预告程序复制4.xlsx 所有四季利润");
           
           
           
