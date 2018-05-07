@@ -136,7 +136,7 @@ public class Get年度利润 {
           
         
         
-        excel.updateExcelxlxs2("H:\\新建文件夹\\新建文件夹\\程序复制\\z业绩公告程序年报复制.xlsx", "所有四季利润", map,map2);
+        excel.updateExcelxlxs2("F:\\stock\\git\\new\\新建文件夹\\程序复制\\z业绩公告程序年报复制.xlsx", "所有四季利润", map,map2);
   }
   
   
@@ -278,7 +278,7 @@ public class Get年度利润 {
   
   
   
-  public static String outputFile = "C:\\Users\\Administrator.WINDOWS-8RP82UF\\Desktop\\test.xls";
+  public static String outputFile = "C:\\Users\\Administrator\\Desktop\\test.xls";
   public static void Optexcel(List<LinkedHashMap<String,List<TreeMap<String,Object>>>> list行业) throws Exception{
 	  
 	  // 创建新的Excel 工作簿  
@@ -505,7 +505,7 @@ public class Get年度利润 {
     File file = null;
     try {  
       
-        String directory = "C:\\Users\\Administrator.WINDOWS-8RP82UF\\Desktop\\test";
+        String directory = "C:\\Users\\Administrator\\Desktop\\test";
     	// String directory = "C:\\Users\\kikili\\Desktop\\test";
        // String fileName = "myFile.html";
         

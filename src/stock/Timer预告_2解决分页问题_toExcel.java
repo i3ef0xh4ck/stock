@@ -28,7 +28,7 @@ public class Timer预告_2解决分页问题_toExcel {
         //支持多个也支持一个
     
     //哪了个季度的业绩预告
-  String date2 = "201706";
+  String date2 = "201806";
 
   //这只是第一页  还有第二页的url
   String url3 = "http://data.eastmoney.com/bbsj/"+date2+"/yjyg.html";
@@ -37,9 +37,9 @@ public class Timer预告_2解决分页问题_toExcel {
   
         
           //哪了个季度的业绩预告
-        String date = "2017-06-30";
+        String date = "2018-06-30";
     
-        int pageSize = 500;
+        int pageSize = 5000;
         String url = "http://datainterface.eastmoney.com/EM_DataCenter/JS.aspx?type=SR&sty=YJYG&fd="+date+"&st=4&sr=-1&p=1&ps="+pageSize+"&js=var%20BVEynmsU={pages:(pc),data:[(x)]}&stat=0&rt=49692448";
         System.out.println(url);
         
@@ -66,13 +66,13 @@ public class Timer预告_2解决分页问题_toExcel {
           
  
         //  formatDate = "2017-06-30";
-          String formatDate2 = "2017-08-20";
-          String formatDate3 = "2017-08-21";
-          String formatDate4 = "2017-08-22";
-          String formatDate5 = "2017-08-23";
-          String formatDate6 = "2017-08-24";
-          String formatDate7 = "2017-08-25";
-          String formatDate8 = "2017-08-26";
+          String formatDate2 = "2018-08-20";
+          String formatDate3 = "2018-08-21";
+          String formatDate4 = "2018-08-22";
+          String formatDate5 = "2018-08-23";
+          String formatDate6 = "2018-08-24";
+          String formatDate7 = "2018-08-25";
+          String formatDate8 = "2018-08-26";
           
           
           List<String> listDate = Arrays.asList(formatDate2,formatDate3,formatDate4,formatDate5,formatDate6,formatDate7,formatDate8);
@@ -91,7 +91,7 @@ public class Timer预告_2解决分页问题_toExcel {
              String 发布date = split[split.length-2];
              
             // if(发布date.equals(formatDate)){
-             if(listDate.contains(发布date)){
+             if(listDate.contains(发布date) || !listDate.contains(发布date)){
              
                
                for(int j = 0 ; j < split.length;j++){
@@ -168,9 +168,9 @@ public class Timer预告_2解决分页问题_toExcel {
             
           }
           
-          excel.updateExcelxlxs2("H:\\新建文件夹\\新建文件夹\\程序复制\\z预告程序复制.xlsx", "所有四季利润", map,null);
+          excel.updateExcelxlxs2("F:\\stock\\git\\new\\新建文件夹\\程序复制\\z预告程序复制2.xlsx", "所有四季利润", map,null);
           
-          System.out.println("请查看:H:\\新建文件夹\\新建文件夹\\程序复制\\z预告程序复制.xlsx  所有四季利润");
+          System.out.println("请查看:F:\\stock\\git\\new\\新建文件夹\\程序复制\\z预告程序复制2.xlsx  所有四季利润");
           
           
           

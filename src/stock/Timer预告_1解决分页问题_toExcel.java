@@ -27,7 +27,7 @@ public class Timer预告_1解决分页问题_toExcel {
         //支持多个也支持一个
     
     //哪了个季度的业绩预告
-  String date2 = "201703";
+  String date2 = "201803";
 
   //这只是第一页  还有第二页的url
   String url3 = "http://data.eastmoney.com/bbsj/"+date2+"/yjyg.html";
@@ -35,9 +35,9 @@ public class Timer预告_1解决分页问题_toExcel {
   
         
           //哪了个季度的业绩预告
-        String date = "2017-03-31";
+        String date = "2018-03-31";
     
-        int pageSize = 300;
+        int pageSize = 4000;
         String url = "http://datainterface.eastmoney.com/EM_DataCenter/JS.aspx?type=SR&sty=YJYG&fd="+date+"&st=4&sr=-1&p=1&ps="+pageSize+"&js=var%20BVEynmsU={pages:(pc),data:[(x)]}&stat=0&rt=49692448";
         System.out.println(url);
         
@@ -72,7 +72,7 @@ public class Timer预告_1解决分页问题_toExcel {
              String[] split = str.split(",");
              
              String 发布date = split[split.length-2];
-             if(发布date.equals(formatDate)){
+             if(发布date.equals(formatDate) ||!发布date.equals(formatDate)){
                
                for(int j = 0 ; j < split.length;j++){
                  
@@ -148,7 +148,7 @@ public class Timer预告_1解决分页问题_toExcel {
             
           }
           
-          excel.updateExcelxlxs2("H:\\新建文件夹\\新建文件夹\\程序复制\\z预告程序复制.xlsx", "所有四季利润", map,null);
+          excel.updateExcelxlxs2("F:\\stock\\git\\new\\新建文件夹\\程序复制\\z预告程序复制1.xlsx", "所有四季利润", map,null);
           
           
           
