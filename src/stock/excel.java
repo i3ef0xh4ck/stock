@@ -151,6 +151,72 @@ public class excel {
   
   
   
+  public static void updateExcelxlxs3(String exlFile,String sheetName,Map<String,List<String>> map)throws Exception{
+	    FileInputStream fis=new FileInputStream(exlFile);
+	    XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fis);
+	    
+	    XSSFSheet sheet = xssfWorkbook.getSheet(sheetName);
+	    
+	    int lastRowNum = sheet.getLastRowNum();
+	    for(int i = 18 ; i < lastRowNum ; i++){
+	      //XSSFRow row = sheet.getRow(i);
+	       XSSFRow row = sheet.getRow(i);
+	      
+	      if(row == null){
+	        continue;
+	      }
+	      
+	      //XSSFCell cell = row.getCell(1);
+	      XSSFCell cell = row.getCell(0);
+	      if(cell == null ){
+	        continue;
+	      }
+	      String code = cell.getStringCellValue();// Cannot get a numeric value from a text cell
+	      System.out.println("code:"+code);
+	      List<String> content = map.get(code);
+	      
+	      if(null == content || "".equals(content)){
+	        continue;
+	      }
+	      
+	      for(int j = 0 ; j < 3;j++){
+//	  	    int type=cell.getCellType();
+		      XSSFCell cell2 = row.getCell(5+j);
+		      if(cell2 == null ){
+		        cell2 = row.createCell(5+j);
+		        cell2.setCellType(HSSFCell.CELL_TYPE_STRING);
+		        
+		      }
+		    String oldValue = cell2.getStringCellValue();
+		    //这里假设对应单元格原来的类型也是String类型
+		    cell2.setCellValue(content.get(j));
+	    	  
+	      }
+
+	    
+	    
+	    map.remove(code);
+//	    System.out.println("单元格原来值为"+oldValue);
+	 //   System.out.println("单元格值被更新为"+content);
+	    
+	    
+	   
+	    
+	    
+	    }
+	    System.out.println("匹配不到的map");
+	    System.out.println(map.toString());
+
+	    fis.close();//关闭文件输入流
+
+	    FileOutputStream fos=new FileOutputStream(exlFile);
+	    xssfWorkbook.write(fos);
+	    fos.close();//关闭文件输出流
+	}
+  
+  
+  
+  
   public static void updateExcelXlxs(String exlFile,String sheetName,Map<String,String> map)throws Exception{
     
     

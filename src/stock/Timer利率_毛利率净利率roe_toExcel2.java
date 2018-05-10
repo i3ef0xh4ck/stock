@@ -2,14 +2,16 @@ package stock;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 
-public class Timer业绩1_解决分页_toExcel {
+public class Timer利率_毛利率净利率roe_toExcel2 {
   //新安股份
   
   public static void main(String [] args) throws Exception {
@@ -22,13 +24,12 @@ public class Timer业绩1_解决分页_toExcel {
     //总
     String date = "2018-03-31";
     int page = 1;
-    int pageSize = 4000;
+    int pageSize = 5000;
     String url = "http://datainterface.eastmoney.com/EM_DataCenter/JS.aspx?type=SR&sty=YJBB&fd="+date+"&st=13&sr=-1&p="+page+"&ps="+pageSize+"&js=var%20DUwfyPhF={pages:(pc),data:[(x)]}&stat=0&rt=49692323";
     
     //http://dcfm.eastmoney.com/em_mutisvcexpandinterface/api/js/get?type=YJBB20_YJBB&token=70f12f2f4f091e459a279469fe49eca5&st=latestnoticedate&sr=-1&p=2&ps=50&js=var%20dbYkhmfv={pages:(tp),data:%20(x)}&filter=(reportdate=^2017-12-31^)(securitytypecode%20in%20(%27058001001%27,%27058001002%27))&rt=50839478
   //  
-    Map<String,String> map = new HashMap<String,String>();
-    Map<String,String> map2 = new HashMap<String,String>();
+    Map<String,List<String>> map = new HashMap<String,List<String>>();
     
     String fileName = "yy";
 
@@ -74,11 +75,11 @@ public class Timer业绩1_解决分页_toExcel {
             if(code.startsWith("6")){
             	
             //  url3 = "http://f10.eastmoney.com/f10_v2/BackOffice.aspx?command=RptF10MainTarget&code="+code+"01&num=9&code1=sh"+code+"&spstr=&n=2&timetip=1487063111208";
-            	  url3 = "http://emweb.securities.eastmoney.com/PC_HSF10/FinanceAnalysis/MainTargetAjax?code=sh"+code+"&type=2";//如果type=1 2  则是单季 
+            	  url3 = "http://emweb.securities.eastmoney.com/PC_HSF10/FinanceAnalysis/MainTargetAjax?code=sh"+code+"&type=0";//如果type=1 2  则是单季 
             }else{
               //只有数字   这个有非和扣非
             //  url3 = "http://f10.eastmoney.com/f10_v2/BackOffice.aspx?command=RptF10MainTarget&code="+code+"02&num=9&code1=sz"+code+"&spstr=&n=2&timetip=1487063111208";
-            	  url3 = "http://emweb.securities.eastmoney.com/PC_HSF10/FinanceAnalysis/MainTargetAjax?code=sz"+code+"&type=2";
+            	  url3 = "http://emweb.securities.eastmoney.com/PC_HSF10/FinanceAnalysis/MainTargetAjax?code=sz"+code+"&type=0";
 
             }
             
@@ -96,6 +97,7 @@ public class Timer业绩1_解决分页_toExcel {
             
             String dateNeed = "2018-03-31"; //只需要第四季的报告
             for(int j = 0 ; j < parseArray2.size();j++){
+            	List<String> list = new ArrayList<String>();
             	Object object2 = parseArray2.get(j);
             	Object date1 = JSON.parseObject(object2.toString()).get("date");
              	Object gsjlr = JSON.parseObject(object2.toString()).get("gsjlr");//归属
@@ -116,37 +118,15 @@ public class Timer业绩1_解决分页_toExcel {
                     System.out.println();
                     System.out.println(i);
                     
+                    list.add(mll.toString());
+                    list.add(jll.toString());
+                    list.add(jqjzcsyl.toString());
                     
-                    
-                    map.put(code, gsjlr.toString());
-                    map2.put(code, kfjlr.toString());
+                    map.put(code, list);
                     System.out.println();
              	}
             }
-            
-          //  int indexOf4 = readFile3.indexOf("成长能力指标");
-            
-/*            int indexOf = readFile3.indexOf("归属净利润");
-            
-            int indexOf2 = readFile3.indexOf("扣非净利润");
-            
-            int indexOf3 = readFile3.indexOf("营业总收入同比增长");
-            
-            
-            String substring2 = readFile3.substring(indexOf, indexOf2);
-            
-            String substring3 = readFile3.substring(indexOf2, indexOf3);*/
-            
-
-            
-             // String s1 = "归属净利润(元)</span></td><td class=\"tips-data-Right\"><span>";
-             // String s2 = "扣非净利润(元)</span></td><td class=\"tips-data-Right\"><span>";
-              
-        //   System.out.println(code+ "  "+ name + " "+ incode + " "+ profite + " "+ 公告日期);
-         //  System.out.println(url3);
-           
-           
-        //  }
+        
           
           
         }else{
@@ -157,7 +137,7 @@ public class Timer业绩1_解决分页_toExcel {
         
       }
       
-      excel.updateExcelxlxs2("F:\\stock\\git\\new\\新建文件夹\\程序复制\\z业绩公告程序复制单季1.xlsx", "所有四季利润", map,map2);
+      excel.updateExcelxlxs3("F:\\stock\\git\\new\\新建文件夹\\程序复制\\利率.xlsx", "所有四季利润", map);
       
       
      
